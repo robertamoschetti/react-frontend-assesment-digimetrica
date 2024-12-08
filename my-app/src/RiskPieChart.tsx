@@ -1,12 +1,12 @@
 import { Container, Row, Col } from "react-bootstrap";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-
+import { Report } from "./types/report";
 // Registrazione esplicita degli elementi necessari
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-function RiskPieChart({ results=[] }) {
+function RiskPieChart({ results }: { results: Report[] }) {
   const chartRef = useRef(null);
 
   // Prepara i dati per il grafico
@@ -41,18 +41,10 @@ function RiskPieChart({ results=[] }) {
     responsive: true,
     plugins: {
       legend: {
-        position: "top",
+        position: "top" as const ,
       },
     },
   };
-
-  useEffect(() => {
-    return () => {
-      if (chartRef.current && chartRef.current.chartInstance) {
-        chartRef.current.chartInstance.destroy();
-      }
-    };
-  }, []);
 
   return (
     <Container>

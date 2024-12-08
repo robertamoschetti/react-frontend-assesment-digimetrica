@@ -6,9 +6,10 @@ import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import DetailPage from "./DetailPage"; 
 import VulnerabilityChart from "./VulnerabilityChart";
 import RiskPieChart from "./RiskPieChart";
+import { Report } from "./types/report";
 
 function App() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<Report[]>([]);
   const [status, setStatus] = useState("");
 
   useEffect(() => {

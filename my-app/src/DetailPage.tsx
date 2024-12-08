@@ -1,7 +1,8 @@
 import { useParams, Link } from "react-router-dom";
 import { Container, Button, Alert, Row, Col, Card } from "react-bootstrap";
+import { Report } from "./types/report";
 
-function DetailPage({ data=[] }) {
+function DetailPage({ data } : { data: Report[] }) {
   const { id } = useParams(); // Ottieni l'ID dalla URL
   const result = data.find((item) => item.idsummary === id); // Trova il risultato corrispondente
 
