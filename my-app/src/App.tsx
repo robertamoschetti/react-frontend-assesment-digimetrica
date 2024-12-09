@@ -33,7 +33,7 @@ function App() {
       });
   }, []);
 
-  if (!data && status == "loading") {
+  if (status == "loading") {
     return (
       <Container className="text-center mt-5">
         <Spinner animation="border" variant="primary" />
