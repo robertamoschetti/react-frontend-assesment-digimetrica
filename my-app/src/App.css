@@ -1,3 +1,7 @@
 .custom-alert {
   white-space: pre-line;
 }
+
+.custom-alert-sm{
+  padding: 0 !important;
+}

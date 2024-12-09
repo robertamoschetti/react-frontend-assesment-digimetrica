@@ -41,7 +41,7 @@ function RiskPieChart({ results }: { results: Report[] }) {
     responsive: true,
     plugins: {
       legend: {
-        position: "top" as const ,
+        position: "top" as const,
       },
     },
   };
@@ -50,8 +50,8 @@ function RiskPieChart({ results }: { results: Report[] }) {
     <Container>
       <Row className="justify-content-center">
         <Col xs={12} md={6}>
-      <h4>Distribuzione dei Risk Score</h4>
-      <Pie ref={chartRef} data={data} options={options} />
+          <h4>Distribuzione dei Risk Score</h4>
+          <Pie ref={chartRef} data={data} options={options} />
         </Col>
       </Row>
     </Container>
