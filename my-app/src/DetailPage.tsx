@@ -18,6 +18,8 @@ function DetailPage({ data }: { data: Report[] }) {
 
     // Recupera i dati da localStorage se non passati direttamente
     const storedData = localStorage.getItem("reports");
+    console.log("Stored data")
+    console.log(storedData)
     if (storedData) {
       const parsedData: Report[] = JSON.parse(storedData);
       const foundResult = parsedData.find((item) => item.idsummary === id);
