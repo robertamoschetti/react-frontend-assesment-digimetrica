@@ -1,12 +1,29 @@
 import { useParams, Link } from "react-router-dom";
 import { Container, Button, Alert, Row, Col, Card, Modal, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { Report } from "./types/report";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PortList from "./PortList";
 
 function DetailPage({ data }: { data: Report[] }) {
   const { id } = useParams(); // Ottieni l'ID dalla URL
-  const result = data.find((item) => item.idsummary === id); // Trova il risultato corrispondente
+
+  // Stato locale per il risultato
+  const [result, setResult] = useState<Report | null>(null);
+
+  useEffect(() => {
+    // Se i dati sono presenti in props, salva nel localStorage
+    if (data.length > 0) {
+      localStorage.setItem("reports", JSON.stringify(data));
+    }
+
+    // Recupera i dati da localStorage se non passati direttamente
+    const storedData = localStorage.getItem("reports");
+    if (storedData) {
+      const parsedData: Report[] = JSON.parse(storedData);
+      const foundResult = parsedData.find((item) => item.idsummary === id);
+      setResult(foundResult || null);
+    }
+  }, [id, data]);
   const [showModalV, setShowModalV] = useState(false);
   const [showModalDL, setShowModalDL] = useState(false);
 
